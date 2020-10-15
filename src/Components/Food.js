@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {Redirect, Link} from 'react-router-dom';
 
 class Food extends Component {
+
     render() {
 
         const name = this.props.match.params.name;
@@ -9,8 +11,13 @@ class Food extends Component {
 
         return (
             <div>
-                <h1>I Love To Eat {name}</h1>
+                {/\d/.test(name) ? <Redirect to="/error" /> : <div>
+                    <h1>I Love To Eat {name}</h1>
                 <img src={url} alt={name} /> 
+                </div>}
+                <p>
+                <Link to="/">Go To Back!!!</Link>
+                </p>
             </div>
         );
     }
